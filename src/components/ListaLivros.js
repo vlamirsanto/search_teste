@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
+import { Alert } from 'react-native';
 import { Container, Header, Item, Input, Icon, Button, Text, Content, List, ListItem, Body, Thumbnail } from 'native-base';
 import axios from 'axios';
-
-const conteudo = [
-  {id: 1, title: 'FUNDAMENTOS DE DERMATOSCOPIA', description: 'O livro contempla o que há de mais moderno nessa técnica de avaliação de imagem não invasiva, que propicia o exame de certas estruturas da pele...', image: 'https://d3vdsoeghm4gc3.cloudfront.net/Custom/Content/Products/61/75/617597_fundamentos-de-dermatoscopia-atlas-dermatologico-740315_m1_636102154901913324.jpg'},
-   {id: 2, title: 'FUNDAMENTOS DE DERMATOSCOPIA', description: 'O livro contempla o que há de mais moderno nessa técnica de avaliação de imagem não invasiva, que propicia o exame de certas estruturas da pele...', image: 'https://d3vdsoeghm4gc3.cloudfront.net/Custom/Content/Products/61/75/617597_fundamentos-de-dermatoscopia-atlas-dermatologico-740315_m1_636102154901913324.jpg'},
-];
+import { apiKeys, urlApi } from '../configs';
 
 export default class ListaLivros extends Component {
 
@@ -17,15 +14,18 @@ export default class ListaLivros extends Component {
 
   componentWillMount() {
     const params = { 
-      headers: {'X-API-KEY': 'LwPnk3KyHaCAKK5EEJftEfNLBxDa5Ns4aOhCoT1qSTGRslX0EvkML9CDpZV8gJeotpXxkdcAlDbhvdAB'} 
+      headers: apiKeys
     };
 
-    axios.get('http://api.192.168.22.10.xip.io/v1/artigos', params)
+    axios.get(urlApi + 'editoras', params)
     .then(response => { 
       this.setState({ listaItens: response.data.data });
       console.log(this.state.listaItens);
     })
-    .catch(error => { console.log(error); });
+    .catch(error => {
+      alert('Houve um erro ao consultar os dados.');
+      console.log(error);
+    });
   }
 
   render() {
@@ -46,9 +46,8 @@ export default class ListaLivros extends Component {
             dataArray={ this.state.listaItens } 
             renderRow={ item => 
             <ListItem>
-              
               <Body>
-                <Text>{ item.titulo }</Text>
+                <Text>{ item.razao_social }</Text>
                 <Text note>{ item.subtitulo }</Text>
               </Body>
             </ListItem>
