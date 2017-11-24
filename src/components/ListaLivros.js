@@ -17,7 +17,7 @@ export default class ListaLivros extends Component {
       headers: apiKeys
     };
 
-    axios.get(urlApi + 'editoras', params)
+    axios.get(urlApi + 'livros/10', params)
     .then(response => { 
       this.setState({ listaItens: response.data.data });
       console.log(this.state.listaItens);
@@ -46,8 +46,9 @@ export default class ListaLivros extends Component {
             dataArray={ this.state.listaItens } 
             renderRow={ item => 
             <ListItem>
+              <Thumbnail square size={80} source={{ uri: 'http://api.192.168.22.10.xip.io' + item.capa }} />
               <Body>
-                <Text>{ item.razao_social }</Text>
+                <Text>{ item.titulo }</Text>
                 <Text note>{ item.subtitulo }</Text>
               </Body>
             </ListItem>

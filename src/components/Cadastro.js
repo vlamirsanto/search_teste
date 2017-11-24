@@ -8,7 +8,7 @@ import { Actions } from "react-native-router-flux";
 
 import styles from '../styles/Login';
 
-export default class Login extends Component {
+export default class Cadastro extends Component {
   render() {
     return (
       <Container style={ styles.backgroundApp }>
@@ -33,8 +33,8 @@ export default class Login extends Component {
       			<Button onPress={ () => Actions.listaLivros() } block success>
             	<Text>Login</Text>
           	</Button>
-            <TouchableOpacity onPress={ () => Actions.cadastro() }>
-              <Text style={ styles.btnCadastro }>Não possui senha? Clique aqui e crie uma.</Text>
+            <TouchableOpacity onPress={ () => Actions.formLogin() }>
+              <Text style={ styles.btnCadastro }>Voltar para o login.</Text>
             </TouchableOpacity>
           </View>
       	</Content>

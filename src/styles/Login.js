@@ -13,8 +13,18 @@ module.exports = StyleSheet.create({
 	bodyImageLogo: {
 		marginTop: 40
 	},
+	imageLogo: {
+		width: 180,
+		height: 150
+	},
 	btnLogin: { 
 		padding: 15,
 		marginTop: 20 
+	},
+	btnCadastro: {
+		textAlign: 'center',
+		marginTop: 30,
+		fontSize: 16,
+		color: '#c0c0c0'
 	}
 });
