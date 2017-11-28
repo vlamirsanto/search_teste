@@ -3,10 +3,11 @@
 */
 import React, { Component } from 'react';
 import { Image, View, TouchableOpacity } from "react-native";
-import { Container, Content, Form, Item, Input, Label, Button, Text, Body, Footer } from 'native-base';
+import { Container, Content, Form, Item, Input, Label, Button, Text, Body } from 'native-base';
 import { Actions } from "react-native-router-flux";
 
 import styles from '../styles/Login';
+import Footer from './Footer';
 
 export default class Login extends Component {
   render() {
@@ -30,7 +31,7 @@ export default class Login extends Component {
       			</Item>
       		</Form>
       		<View style={ styles.btnLogin }>
-      			<Button onPress={ () => Actions.listaLivros() } block success>
+      			<Button onPress={ () => Actions.listaLivros1() } block success>
             	<Text>Login</Text>
           	</Button>
             <TouchableOpacity onPress={ () => Actions.cadastro() }>
@@ -38,11 +39,8 @@ export default class Login extends Component {
             </TouchableOpacity>
           </View>
       	</Content>
-      	<Footer style={ styles.backgroundApp }>
-        	<Text style={ styles.txtFooter }>2017 - Todos os direitos reservados</Text>
-        </Footer>
+        <Footer />
       </Container>
     );
   }
 }
-
